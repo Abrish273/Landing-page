@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { BurgerIcon, Logo, Right } from "../../assets";
+import { BurgerIcon, Logo } from "../../assets";
 import { CustomBtn } from "../../components";
-import { COLORS } from "../../constants/theme";
+import "../../App.css";
+
+const links = [
+  { id: 1, text: "Products", href: "#" },
+  { id: 2, text: "Solution", href: "#" },
+  { id: 3, text: "Resource", href: "#" },
+  { id: 4, text: "Developers", href: "#" },
+  { id: 5, text: "Pricing", href: "#" },
+];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,14 +22,7 @@ const Navbar: React.FC = () => {
     console.log("Button clicked!");
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "1rem 3rem",
-      }}
-    >
+    <div className="global">
       <div>
         <img src={Logo} alt="logo" />
       </div>
@@ -33,47 +34,18 @@ const Navbar: React.FC = () => {
             } md:w-auto w-full flex items-center px-5`}
           >
             <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-              <li>
-                <a className="hover:text-gray-500" href="#">
-                  Products
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-gray-500" href="#">
-                  Solution
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-gray-500" href="#">
-                  Resource
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-gray-500" href="#">
-                  Developers
-                </a>
-              </li>
-              <li>
-                <a className="hover:text-gray-500" href="#">
-                  Pricing
-                </a>
-              </li>
+              {links.map((link) => (
+                <li key={link.id}>
+                  <a className="hover:text-gray-500" href={link.href}>
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
+          <CustomBtn onClick={handleClick} label="Submit" type="type_one" />
           <div className="flex items-center gap-4">
-            {/* <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
-              Sign in
-            </button> */}
-            <div className="sm:hidden">
-              <CustomBtn
-                onClick={handleClick}
-                label="Submit"
-                type="type_one"
-                // backgroundColor="#3498db"
-                // textColor={COLORS.primary}
-                // borderColor="#3498db"
-              />
-            </div>
+            <div /*className="md:hidden"*/></div>
 
             <img
               onClick={onToggleMenu}
@@ -81,6 +53,32 @@ const Navbar: React.FC = () => {
               src={BurgerIcon}
               alt="burger-icons"
             />
+            {/*
+                
+            <label className="btn btn-circle swap swap-rotate">
+            <input type="checkbox" />
+
+            <svg
+              className="swap-off fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512">
+              <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+            </svg>
+
+            <svg
+              className="swap-on fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512">
+              <polygon
+                points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+            </svg>
+          </label>
+               
+             */}
           </div>
         </nav>
       </header>

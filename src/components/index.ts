@@ -1,3 +1,5 @@
-import CustomBtn from "./Buttons/CustomBtn";
+import CustomBtn from "./CustomBtn";
+import Carousel from "./Carousel";
+import MemberCard from "./MemberCard";
 
-export { CustomBtn };
+export { CustomBtn, Carousel, MemberCard };

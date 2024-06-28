@@ -1,20 +1,22 @@
 import React from "react";
-import { Navbar } from "../containers";
+import {
+  Helping,
+  Hero,
+  MemberCards,
+  Navbar,
+  OurClients,
+  Unseen,
+} from "../containers";
 
 const Landing: React.FC = () => {
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "5vh" }}>
       <Navbar />
-      <br />
-      Hero section
-      <br />
-      Our clients
-      <br />
-      manage ur entire business
-      <br />
-      unseen
-      <br />
-      helping a local
+      <Hero />
+      <OurClients />
+      <MemberCards />
+      <Unseen />
+      <Helping />
       <br />
       how to design
     </div>
