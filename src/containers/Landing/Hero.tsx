@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import { HeroImg } from "../../assets";
-import { Typography } from "../../components/Typography";
+import { Typography } from "../../components";
 import { CustomBtn } from "../../components";
 
 const Hero: React.FC = () => {

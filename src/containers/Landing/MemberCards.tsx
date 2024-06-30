@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { MemberCard } from "../../components";
 
 const MemberCards: React.FC = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    useEffect(() => {
-      const handleResize = () => setWindowWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div
       style={{
@@ -23,9 +23,9 @@ const MemberCards: React.FC = () => {
         color: "green",
       }}
     >
-      <MemberCard />
-      <MemberCard />
-      <MemberCard />
+      <MemberCard styleType="style_one" />
+      <MemberCard styleType="style_one" />
+      <MemberCard styleType="style_one" />
     </div>
   );
 };

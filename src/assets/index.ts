@@ -9,6 +9,7 @@ import Vector from "./static/Vector.svg";
 import Member from "./static/member.svg";
 import Unseen from "./static/unseen.svg";
 import Person from "./static/pers.svg";
+import Mobile from "./static/pana.svg";
 
 export {
   Logo,
@@ -22,4 +23,5 @@ export {
   Member,
   Unseen,
   Person,
+  Mobile
 };

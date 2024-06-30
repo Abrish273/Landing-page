@@ -12,9 +12,10 @@ const getStyle = (styleType?: StyleType) => {
   switch (styleType) {
     case "style_one":
       return {
+        dispaly: "flex",
         backgroundColor: "white",
         color: "black",
-        border: "1px solid black",
+        // border: "1px solid black",
       };
     case "style_two":
       return {

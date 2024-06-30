@@ -78,7 +78,7 @@ const CustomBtn: React.FC<CustomBtnProps> = ({
             : isHovered
             ? COLORS.primaryHover
             : active
-            ? "red"
+            ? COLORS.primary
             : COLORS.primary,
           color: disabled
             ? COLORS.btnGray

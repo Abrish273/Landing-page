@@ -19,7 +19,7 @@ const Helping: React.FC = () => {
           background: COLORS.btnBglight,
           display: "flex",
           flexDirection: "column",
-          gap: "3vh"
+          gap: "3vh",
         }}
       >
         <p>
@@ -37,8 +37,7 @@ const Helping: React.FC = () => {
       </div>
       <div>
         <div>
-            <MemberCard
-            />
+          <MemberCard styleType="style_one" />
         </div>
         <div>right bottom</div>
       </div>
