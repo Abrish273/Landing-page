@@ -1,87 +1,155 @@
 import React from "react";
 import { UseFlexColumnBelowWidth } from "../utils";
+import Typography from "./Typography";
+import { COLORS } from "../constants/theme";
+import { ArrowRight } from "../assets";
+
+type StyleType = "default" | "style_one" | "style_two" | "style_three";
 
 interface CardProps {
-  variant?: "default" | "outlined";
+  type?: StyleType;
+  imageSrc?: string;
+  title?: string;
+  description?: string;
   borderColor?: string;
   backgroundColor?: string;
   padding?: string;
+  width: string | number;
+  children: React.ReactNode;
+  variantTitle?: string;
+  variantBody?: string;
+  colorProps?: string;
+  icon: boolean;
 }
 
+const getCardStyles = (type?: StyleType) => {
+  switch (type) {
+    case "style_one":
+      return {
+        display: "flex",
+        backgroundColor: COLORS.btnBglight,
+        color: "black",
+        // border: "1px solid black",
+        flexDirection: "column",
+        borderRadius: "10px",
+        justifyContent: "space-around",
+        alignItems: "center",
+        gap: "6px",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        padding: "0.5vw 2vw",
+        width: "12em",
+      };
+    case "style_two":
+      return {
+        display: "flex",
+        // backgroundColor: "lightgray",
+        color: "darkgray",
+        // border: "1px solid darkgray",
+        borderRadius: "2px",
+        flexDirection: "row",
+        // justifyContent: "space-around",
+        alignItems: "center",
+        gap: "10px",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        padding: "10px",
+        width: "15em",
+      };
+    case "style_three":
+      return {
+        display: "flex",
+        backgroundColor: "lightblue",
+        color: "blue",
+        border: "1px solid blue",
+        flexDirection: "column",
+        justifyContent: "space-around",
+        alignItems: "center",
+        gap: "6px",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        padding: "4vw",
+        width: "15em",
+      };
+    default:
+      return {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "8px",
+        backgroundColor: "white",
+        color: "black",
+        border: "1px solid black",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.1)",
+        borderRadius: "8px",
+        padding: "1rem",
+      };
+  }
+};
+
 const Card: React.FC<CardProps> = ({
-  variant = "default",
-  borderColor = "#000000",
-  backgroundColor = "#FFFFFF",
-  padding = "1rem",
+  type = "default",
+  imageSrc,
+  title,
+  description,
+  borderColor,
+  backgroundColor,
+  padding,
+  width,
   children,
+  variantTitle,
+  variantBody,
+  colorProps,
+  icon,
 }) => {
-  const isMobile = UseFlexColumnBelowWidth(480); // Mobile breakpoint
-  const isTablet = UseFlexColumnBelowWidth(768); // Tablet breakpoint
-  const isLaptop = UseFlexColumnBelowWidth(1024); // Laptop breakpoint
-  const isDesktop = UseFlexColumnBelowWidth(1440); // Desktop breakpoint
+  const styles = getCardStyles(type);
 
-  const getCardStyles = () => {
-    let boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
-    let borderRadius = "8px";
-
-    if (isMobile) {
-      boxShadow = "none"; // No box shadow on mobile
-      borderRadius = "4px"; // Smaller border radius on mobile
-    }
-
-    switch (variant) {
-      case "default":
-        return {
-          border: `1px solid ${borderColor}`,
+  if (type === "default") {
+    return (
+      <div
+        style={{
+          ...styles,
+          borderColor,
           backgroundColor,
           padding,
-          boxShadow,
-          borderRadius,
-        };
-      case "outlined":
-        return {
-          border: `2px dashed ${borderColor}`,
-          backgroundColor,
-          padding,
-          borderRadius,
-        };
-      default:
-        return {
-          border: `1px solid ${borderColor}`,
-          backgroundColor,
-          padding,
-          boxShadow,
-          borderRadius,
-        };
-    }
-  };
+          width: "100%",
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
 
-  return <div style={{ ...getCardStyles(), width: "100%" }}>{children}</div>;
+  return (
+    <div style={styles}>
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          style={{ width: width ? width : "2em" }}
+          alt="card-img"
+        />
+      )}
+      <div>
+        {title && (
+          <p style={{ textAlign: "center" }}>
+            <Typography variant={variantTitle ? variantTitle : "h4"}>
+              {title}
+            </Typography>
+          </p>
+        )}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {description && (
+            <p style={{ textAlign: "center" }}>
+              <Typography
+                variant={variantBody ? variantBody : "body3"}
+                color={colorProps ? colorProps : COLORS.black}
+              >
+                {description}
+              </Typography>
+            </p>
+          )}
+          {icon && <img src={ArrowRight} style={{ width: "30px" }} alt="" />}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Card;
-
-
-
-/*
-   <div>
-
-      {/*
-     
-      {/* <Card variant="default" backgroundColor="#F0F0F0" borderColor="#CCCCCC">
-        <div>
-          <h3>Title</h3>
-          <p>This is a default card.</p>
-        </div>
-      </Card>
-
-      <Card
-        variant="outlined"
-        backgroundColor="#FFFFFF"
-        borderColor="#FF5733"
-        padding="0.5rem"
-      >
-        <h3>Title</h3>
-        <p>This is an outlined card.</p>
-      </Card> 
-   // </div>*/

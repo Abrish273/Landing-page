@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { BurgerIcon, Logo } from "../../assets";
 import { CustomBtn } from "../../components";
 import "../../App.css";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const links = [
-  { id: 1, text: "Products", href: "#" },
+  { id: 1, text: "Products", href: "products" },
   { id: 2, text: "Solution", href: "#" },
   { id: 3, text: "Resource", href: "#" },
   { id: 4, text: "Developers", href: "#" },
@@ -12,6 +13,7 @@ const links = [
 ];
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const onToggleMenu = () => {
@@ -22,38 +24,40 @@ const Navbar: React.FC = () => {
     console.log("Button clicked!");
   };
   return (
-    <div className="global">
-      <div>
-        <img src={Logo} alt="logo" />
-      </div>
-      <header className="bg-white">
-        <nav className="flex justify-between items-center w-[92%] mx-auto">
-          <div
-            className={`nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 ${
-              isOpen ? "top-20" : "top-[-100%]"
-            } md:w-auto w-full flex items-center px-5`}
-          >
-            <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-              {links.map((link) => (
-                <li key={link.id}>
-                  <a className="hover:text-gray-500" href={link.href}>
+    <div /*className="global"*/>
+      <div className="global">
+        <div>
+          <img src={Logo} alt="logo" />
+        </div>
+        <header className="bg-white">
+          <nav className="flex justify-between items-center w-[92%] mx-auto">
+            <div
+              className={`nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 ${
+                isOpen ? "top-20" : "top-[-100%]"
+              } md:w-auto w-full flex items-center px-5`}
+            >
+              <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                {links.map((link) => (
+                  <li
+                    key={link.id}
+                    onClick={() => navigate(`${link.href}`)}
+                  >
                     {link.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <CustomBtn onClick={handleClick} label="Submit" type="type_one" />
-          <div className="flex items-center gap-4">
-            <div /*className="md:hidden"*/></div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <CustomBtn onClick={handleClick} label="Submit" type="type_one" />
+            <div className="flex items-center gap-4">
+              <div /*className="md:hidden"*/></div>
 
-            <img
-              onClick={onToggleMenu}
-              className="w-8 h-8 cursor-pointer md:hidden"
-              src={BurgerIcon}
-              alt="burger-icons"
-            />
-            {/*
+              <img
+                onClick={onToggleMenu}
+                className="w-8 h-8 cursor-pointer md:hidden"
+                src={BurgerIcon}
+                alt="burger-icons"
+              />
+              {/*
                 
             <label className="btn btn-circle swap swap-rotate">
             <input type="checkbox" />
@@ -79,9 +83,11 @@ const Navbar: React.FC = () => {
           </label>
                
              */}
-          </div>
-        </nav>
-      </header>
+            </div>
+          </nav>
+        </header>
+      </div>
+      <div>{<Outlet />}</div>
     </div>
   );
 };

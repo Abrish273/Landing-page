@@ -3,18 +3,14 @@ import "../../App.css";
 import { HeroImg } from "../../assets";
 import { Typography } from "../../components";
 import { CustomBtn } from "../../components";
+import ResponsiveFlexContainer from "../../components/layouts/ResponsiveFlexContainer";
 
 const Hero: React.FC = () => {
   const handleClick = () => {
     console.log("hello from hero");
   };
   return (
-    <div
-      className="global flex flex-col sm:gap-5 md:flex-row justify-between  mx-auto"
-      style={{
-        padding: "4vh 6vw",
-      }}
-    >
+    <ResponsiveFlexContainer>
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
           <Typography variant="h1">Lessons and insights</Typography>
@@ -29,7 +25,15 @@ const Hero: React.FC = () => {
           <CustomBtn onClick={handleClick} label="Submit" type="type_one" />
         </div>
       </div>
-      <div style={{ maxWidth: "40vw", maxHeight: "30vh", display: "flex", alignItems: "center", marginRight: "8vw" }}>
+      <div
+        style={{
+          maxWidth: "40vw",
+          maxHeight: "30vh",
+          display: "flex",
+          alignItems: "center",
+          marginRight: "8vw",
+        }}
+      >
         <img
           src={HeroImg}
           style={{ width: "100%", height: "100%" }}
@@ -37,7 +41,7 @@ const Hero: React.FC = () => {
           alt="hero"
         />
       </div>
-    </div>
+    </ResponsiveFlexContainer>
   );
 };
 

@@ -10,6 +10,8 @@ import Member from "./static/member.svg";
 import Unseen from "./static/unseen.svg";
 import Person from "./static/pers.svg";
 import Mobile from "./static/pana.svg";
+import Tesla from "./static/tesla.svg";
+import PersonImage from "./static/personImg.svg"
 
 export {
   Logo,
@@ -23,5 +25,7 @@ export {
   Member,
   Unseen,
   Person,
-  Mobile
+  Mobile,
+  Tesla,
+  PersonImage
 };

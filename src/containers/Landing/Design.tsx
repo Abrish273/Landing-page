@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Unseen as Unseens } from "../../assets";
+import { Mobile } from "../../assets";
 import Typography from "../../components/Typography";
 import { CustomBtn } from "../../components";
 import ResponsiveFlexContainer from "../../components/layouts/ResponsiveFlexContainer";
 
-const Unseen: React.FC = () => {
+const Design: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Unseen: React.FC = () => {
           //   background: "rgba(0, 0, 0, 0.5)",
         }}
       >
-        <img src={Unseens} style={{ width: "100%", height: "100%" }} alt="" />
+        <img src={Mobile} style={{ width: "100%", height: "100%" }} alt="" />
       </div>
       <div className="left flex flex-col gap-6">
         {/* <p style={{ textAlign: "center" }}> */}
@@ -53,4 +53,4 @@ const Unseen: React.FC = () => {
   );
 };
 
-export default Unseen;
+export default Design;
